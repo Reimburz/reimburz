@@ -10,4 +10,4 @@ Automate the process of reviewing bills.
 
 ## Initial Prototype
 
-![Prototype](./src/prototype.png)
+![Prototype](./src/assets/prototype.png)
