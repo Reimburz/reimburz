@@ -5,6 +5,8 @@ import './App.css';
 function App() {
   const [annualCTC, setAnnualCTC] = useState('');
   const [monthlyCTC, setMonthlyCTC] = useState('');
+  const [totalDays, setTotalDays] = useState('');
+  const [lopDays, setLOPDays] = useState('');
   const [convReimb, setConvReimb] = useState('');
   const [teleReimb, setTeleReimb] = useState('');
   const [mealReimb, setMealReimb] = useState('');
@@ -44,6 +46,24 @@ function App() {
             placeholder="₹ 191,667.67"
             value={monthlyCTC}
             onChange={(e) => setMonthlyCTC(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Total days</label>
+          <input
+            type="text"
+            placeholder="31 days"
+            value={totalDays}
+            onChange={(e) => setTotalDays(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>LOP days</label>
+          <input
+            type="text"
+            placeholder="0"
+            value={lopDays}
+            onChange={(e) => setLOPDays(e.target.value)}
           />
         </div>
       </div>
