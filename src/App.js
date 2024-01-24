@@ -39,12 +39,17 @@ function App() {
         </div>
         <div>
           <label>Monthly CTC</label>
-          <input
-            type="number"
-            placeholder="₹ 191,667.67"
-            value={monthlyCTC}
-            onChange={(e) => setMonthlyCTC(e.target.value)}
-          />
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <input
+              type="number"
+              placeholder="₹ 191,667.67"
+              value={monthlyCTC}
+              onChange={(e) => setMonthlyCTC(e.target.value)}
+            />
+            <span style={{ marginLeft: '30px' }}>
+              <b>Total days</b> = 31 <b>LOP days</b> = 0
+            </span>
+          </div>
         </div>
       </div>
       <br />
