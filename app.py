@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins='http://localhost:3000')
 
 def calculate_reimbursement_breakdown(annual_ctc, monthly_ctc, total_days, lop_days):
     if monthly_ctc is None:
@@ -31,7 +31,7 @@ def calculate_meal_reimbursement(total_reimburse_amount, conv_reimbursement, tel
     meal_reimbursement_balance = total_reimburse_amount - conv_reimbursement - telcom_reimbursement
     return meal_reimbursement_balance
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['GET', 'POST'])  # Allow both GET and POST requests
 def handle_request():
     if request.method == 'POST':
         data = request.get_json()
@@ -57,6 +57,10 @@ def handle_request():
             return jsonify({'result': result})
         except ValueError as e:
             return jsonify({'error': str(e)}), 400
+
+    elif request.method == 'GET':
+        # Handle GET requests if needed
+        return jsonify({'message': 'GET request received'})
 
 if __name__ == '__main__':
     app.run(debug=True)

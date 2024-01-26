@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import logo from './assets/logo.png'; 
 
 function App() {
   const [formData, setFormData] = useState({
@@ -22,7 +22,7 @@ function App() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://127.0.0.1:5000/', {
+      const response = await fetch('http://127.0.0.1:5000', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,8 +43,9 @@ function App() {
       <div className="row justify-content-center">
         <div className="col-md-8">
           <div className="card">
-            <div className="card-header">
-              <h1 className="text-center">Reimburz💰</h1>
+            <div className="text-center">
+              <img src={logo} alt="Reimburz Logo" width="80" height="80" />
+              <h6 className="text-center">Reimburz💰</h6>
             </div>
             <div className="card-body">
               <form onSubmit={handleSubmit}>
