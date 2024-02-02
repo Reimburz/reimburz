@@ -22,7 +22,7 @@ function App() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:5000', {
+      const response = await fetch('http://127.0.0.1:5000', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -55,8 +55,9 @@ function App() {
                     type="number"
                     className="form-control"
                     name="annual_ctc"
-                    value={formData.annual_ctc}
+                    value={formData.annual_ctc === 0 ? '' : formData.annual_ctc}
                     onChange={handleInputChange}
+                    placeholder="15,00,000"
                   />
                 </div>
 
@@ -66,8 +67,9 @@ function App() {
                     type="number"
                     className="form-control"
                     name="total_days"
-                    value={formData.total_days}
+                    value={formData.total_days === 0 ? '' : formData.total_days}
                     onChange={handleInputChange}
+                    placeholder="31"
                   />
                 </div>
                 <div className="mb-3">
@@ -76,8 +78,9 @@ function App() {
                     type="number"
                     className="form-control"
                     name="lop_days"
-                    value={formData.lop_days}
+                    value={formData.lop_days === 0 ? '' : formData.lop_days}
                     onChange={handleInputChange}
+                    placeholder="1"
                   />
                 </div>
                 <button type="submit" className="btn btn-primary">Calculate Reimbursement</button>
