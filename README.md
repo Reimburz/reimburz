@@ -1,4 +1,4 @@
-# reimburz
+# reimburz App
 
 ## Problem Statement
 
