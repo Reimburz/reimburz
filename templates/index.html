@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reimbursement Calculator</title>
+</head>
+<body>
+    <h1>Reimbursement Calculator</h1>
+
+    <form id="reimbursementForm">
+        <label for="annualCtc">Enter Annual CTC:</label>
+        <input type="number" id="annualCtc" required>
+        <br>
+        <label for="totalDays">Enter Total Days:</label>
+        <input type="number" id="totalDays" required>
+        <br>
+        <label for="lopDays">Enter LOP Days:</label>
+        <input type="number" id="lopDays" required>
+        <br>
+        <button type="button" onclick="calculateReimbursement()">Calculate</button>
+    </form>
+
+    <div id="resultContainer" style="display: none;">
+        <h2>Result</h2>
+        <p id="finalReimburseAmount"></p>
+    </div>
+
+    <script>
+        async function calculateReimbursement() {
+            const annualCtc = parseFloat(document.getElementById('annualCtc').value);
+            const totalDays = parseInt(document.getElementById('totalDays').value);
+            const lopDays = parseInt(document.getElementById('lopDays').value);
+
+            if (isNaN(annualCtc) || isNaN(totalDays) || isNaN(lopDays)) {
+                alert("Please enter valid numbers for Annual CTC, Total Days, and LOP Days.");
+                return;
+            }
+
+            const response = await fetch('/api/calculate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    annual_ctc: annualCtc,
+                    total_days: totalDays,
+                    lop_days: lopDays,
+                }),
+            });
+
+            if (!response.ok) {
+                console.error('Network response was not ok');
+                return;
+            }
+
+            const data = await response.json();
+            document.getElementById('finalReimburseAmount').textContent = `Final Reimburse Amount: ${data.final_reimburse_amount}`;
+            document.getElementById('resultContainer').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
