@@ -6,7 +6,7 @@ The user is required to manually compute the bills.
 
 ## Solution
 
-Automate the process of reviewing bills.
+Automate the process of reviewing and submitting bills
 
 ## Initial Prototype
 
